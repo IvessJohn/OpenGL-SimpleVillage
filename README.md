@@ -1,12 +1,9 @@
-# OpenGL-Core
-Work-in-progress OpenGL library that aims to provide a powerful sandbox for you to learn or experiment with OpenGL, and graphics programming in general.
+# OpenGL-SimpleVillage
+A practice project that shows a simple village drawn with the use of OpenGL and C++.
 
-## Usage
+## Credits
 
-Currently only "officially" supports Windows - Mac and Linux support is coming soon.
-
-```
-git clone --recursive https://github.com/TheCherno/OpenGL
-```
-
-Run `scripts/Win-Premake.bat` and open `OpenGL-Sandbox.sln` in Visual Studio 2019. `OpenGL-Sandbox/src/SandboxLayer.cpp` contains the example OpenGL code that's running.
+[OpenGLCore](https://github.com/TheCherno/OpenGL) by [TheCherno](https://github.com/TheCherno)
+ImGui
+Glad
+GLFW
