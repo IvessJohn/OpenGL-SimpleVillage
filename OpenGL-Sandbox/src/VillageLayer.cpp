@@ -61,30 +61,30 @@ void VillageLayer::OnAttach()
 		// Sun
 
 		// Cloud - Small
-		375.0f, 120.0f, 0.0f,
-		540.0f, 120.0f, 0.0f,
-		540.0f, 75.0f, 0.0f,
-		375.0f, 75.0f, 0.0f,
+		375.0f, 120.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		540.0f, 120.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		540.0f, 75.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		375.0f, 75.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Cloud - Big
-		505.0f, 100.0f, 0.0f,
-		750.0f, 100.0f, 0.0f,
-		750.0f, 20.0f, 0.0f,
-		505.0f, 20.0f, 0.0f,
+		505.0f, 100.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		750.0f, 100.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		750.0f, 20.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		505.0f, 20.0f, 0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Birds
 
 		// Far ground
-		0.0f,	720.0f,	0.0f,
-		1280.0f,720.0f,	0.0f,
-		1280.0f,312.0f,	0.0f,
-		0.0f,	312.0f,	0.0f,
+		0.0f,	720.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,720.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,312.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f,	312.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Ground
-		0.0f,	720.0f,	0.0f,
-		1280.0f,720.0f,	0.0f,
-		1280.0f,480.0f,	0.0f,
-		0.0f,	480.0f,	0.0f,
+		0.0f,	720.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,720.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,480.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f,	480.0f,	0.0f, 0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// The house
 
@@ -95,8 +95,18 @@ void VillageLayer::OnAttach()
 	glBindBuffer(GL_ARRAY_BUFFER, m_QuadVB);
 	glBufferData(GL_ARRAY_BUFFER, MaxVertexCount * sizeof(Vertex), vertices, GL_STATIC_DRAW);
 
+	// Define position (3 floats)
 	glEnableVertexArrayAttrib(m_QuadVB, 0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Position));
+	// Define color (4 floats)
+	glEnableVertexArrayAttrib(m_QuadVB, 1);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, Color));
+	// Define texture position (2 floats)
+	glEnableVertexArrayAttrib(m_QuadVB, 2);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, TexCoords));
+	// Define texture ID (1 float)
+	glEnableVertexArrayAttrib(m_QuadVB, 3);
+	glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, TexID));
 
 	uint32_t indices[MaxIndexCount];
 	uint32_t offset = 0;
@@ -187,6 +197,8 @@ void VillageLayer::OnUpdate(Timestep ts)
 
 	std::array<Vertex, 64> vertices;
 	Vertex* buffer = vertices.data();
+	//buffer = CreateQuad(buffer, )
+
 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Blue BG <- MAKE IT BLUE
 	//glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Grey BG
@@ -195,7 +207,6 @@ void VillageLayer::OnUpdate(Timestep ts)
 	glUseProgram(m_Shader->GetRendererID());
 
 	SetUniformMat4(m_Shader->GetRendererID(), "u_ViewProjection", m_CameraController.GetCamera().GetViewProjectionMatrix());
-	SetUniformVec4(m_Shader->GetRendererID(), "u_Color", glm::vec4(0.8f, 0.2f, 0.3f, 1.0f));
 
 	glBindVertexArray(m_QuadVA);
 	glDrawElements(GL_TRIANGLES, 128, GL_UNSIGNED_INT, nullptr);
