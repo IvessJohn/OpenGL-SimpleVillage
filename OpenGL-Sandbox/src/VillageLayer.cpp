@@ -269,6 +269,10 @@ void VillageLayer::OnUpdate(Timestep ts)
 		0.0f,	0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
 	};
 
+	m_BigCloudOffset[0] = (m_BigCloudOffset[0] + m_BigCloudSpeed);// % m_Borders[0];
+	m_SmallCloudOffset[0] = (m_SmallCloudOffset[0] + m_SmallCloudSpeed);// % m_Borders[0];
+	m_BirdsOffset[0] = (m_BirdsOffset[0] + m_BirdSpeed);// % m_Borders[0];
+
 	glBindBuffer(GL_ARRAY_BUFFER, m_QuadVB);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
 
@@ -296,9 +300,9 @@ void VillageLayer::OnImGuiRender()
 	ImGui::Spacing();
 	ImGui::Spacing();
 
-	ImGui::SliderFloat("Bird speed", &m_BirdSpeed, 0.0f, 2.0f, "%.2f");
-	ImGui::SliderFloat("Small cloud speed", &m_SmallCloudSpeed, 0.0f, 2.0f, "%.2f");
-	ImGui::SliderFloat("Big cloud speed", &m_BigCloudSpeed, 0.0f, 2.0f, "%.2f");
+	ImGui::SliderFloat("Bird speed", &m_BirdSpeed, 0.0f, 5.0f, "%.2f");
+	ImGui::SliderFloat("Small cloud speed", &m_SmallCloudSpeed, 0.0f, 5.0f, "%.2f");
+	ImGui::SliderFloat("Big cloud speed", &m_BigCloudSpeed, 0.0f, 5.0f, "%.2f");
 
 	ImGui::Spacing();
 	ImGui::Spacing();
