@@ -48,7 +48,7 @@ void VillageLayer::OnAttach()
 
 	glUseProgram(m_Shader->GetRendererID());
 
-	const size_t MaxQuadCount = 16;
+	const size_t MaxQuadCount = 24;
 	const size_t MaxVertexCount = MaxQuadCount * 4;
 	const size_t MaxIndexCount = MaxQuadCount * 6;
 
@@ -133,6 +133,21 @@ void VillageLayer::OnAttach()
 		375.0f, 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Birds
+		// Bird 1
+		630.0f, 120.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		630.0f, 70.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		654.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		570.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Bird 2
+		580.0f, 71.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		580.0f, 40.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		600.0f, 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		550.0f, 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Bird 3
+		505.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		505.0f, 55.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		525.0f, 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		465.0f, 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Cloud - Big
 		505.0f, 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
@@ -141,7 +156,10 @@ void VillageLayer::OnAttach()
 		505.0f, 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Sun - straight
-		// Sun - rotated
+		72.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		152.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		152.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		72.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Sky
 		0.0f,	720.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
@@ -254,8 +272,8 @@ void VillageLayer::OnUpdate(Timestep ts)
 
 	uint32_t indexCount = 0;
 
-	std::array<Vertex, 64> vertices;
-	Vertex* buffer = vertices.data();
+	//std::array<Vertex, 64> vertices;
+	//Vertex* buffer = vertices.data();
 	//buffer = CreateQuad(buffer, )
 
 
