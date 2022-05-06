@@ -19,4 +19,11 @@ private:
 	GLCore::Utils::OrthographicCameraController m_CameraController;
 
 	GLuint m_QuadVA = 0, m_QuadVB = 0, m_QuadIB = 0;
+
+	const float m_Borders[2]{-320.0f, 1600.0f};
+	float m_BirdsOffset[2]{0.0f, 0.0f}, m_BigCloudOffset[2]{ 0.0f, 0.0f }, m_SmallCloudOffset[2]{ 0.0f, 0.0f };
+
+	float m_BigCloudSpeed = 0.1f;
+	float m_SmallCloudSpeed = 0.2f;
+	float m_BirdSpeed = 0.5f;
 };

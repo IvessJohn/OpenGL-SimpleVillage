@@ -55,122 +55,9 @@ void VillageLayer::OnAttach()
 	glCreateVertexArrays(1, &m_QuadVA);
 	glBindVertexArray(m_QuadVA);
 
-	// Vertices.
-	// Keep in mind that the window is 1280x720 (0.0, 0.0 is TOP LEFT corner)
-	float vertices[] = {
-
-		// Tree
-		// Leaves - Square 1 (Rotated)
-		125.0f,	490.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		195.0f,	415.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		125.0f,	340.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		55.0f,	415.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Leaves - Square 2 (Straight)
-		80.0f,	470.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		170.0f,	470.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		170.0f,	380.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		80.0f,	380.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Trunk
-		110.0f,	540.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		140.0f,	540.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		140.0f,	470.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		110.0f,	470.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// The house
-		// The door
-		830.0f,	550.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		910.0f,	550.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		910.0f,	430.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		830.0f,	430.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Window - front
-		940.0f,	490.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		995.0f,	490.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		995.0f,	440.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		940.0f,	440.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Window - side
-		1060.0f,500.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1110.0f,500.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1110.0f,410.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1060.0f,410.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Wall - front
-		720.0f,	550.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1020.0f,550.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1020.0f,350.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
-		720.0f,	350.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Wall - side
-		1020.0f,550.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1150.0f,550.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1150.0f,350.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1020.0f,350.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Roof - front
-		720.0f,	350.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1020.0f,350.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1090.0f,240.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		790.0f,	240.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Roof - front (it's a triangle, but the last vertex is duplicated
-		// to not break the format)
-		1020.0f,350.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1150.0f,350.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1090.0f,240.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1090.0f,240.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Ground
-		0.0f,	720.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,720.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,480.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f,	480.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Far ground
-		0.0f,	720.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,720.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,312.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f,	312.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Cloud - Small
-		375.0f, 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		540.0f, 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		540.0f, 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		375.0f, 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Birds
-		// Bird 1
-		630.0f, 120.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		630.0f, 70.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		654.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		570.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Bird 2
-		580.0f, 71.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		580.0f, 40.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		600.0f, 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		550.0f, 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		// Bird 3
-		505.0f, 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		505.0f, 55.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		525.0f, 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		465.0f, 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Cloud - Big
-		505.0f, 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		750.0f, 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		750.0f, 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		505.0f, 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Sun - straight
-		72.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		152.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		152.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		72.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-
-		// Sky
-		0.0f,	720.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,720.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
-		1280.0f,0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
-		0.0f,	0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
-	};
-
 	glCreateBuffers(1, &m_QuadVB);
 	glBindBuffer(GL_ARRAY_BUFFER, m_QuadVB);
-	glBufferData(GL_ARRAY_BUFFER, MaxVertexCount * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, MaxVertexCount * sizeof(Vertex), nullptr, GL_DYNAMIC_DRAW);
 
 	// Define position (3 floats)
 	glEnableVertexArrayAttrib(m_QuadVB, 0);
@@ -269,13 +156,121 @@ static Vertex* CreateQuad(
 void VillageLayer::OnUpdate(Timestep ts)
 {
 	m_CameraController.OnUpdate(ts);
+	
+	// Vertices.
+	// Keep in mind that the window is 1280x720 (0.0, 0.0 is TOP LEFT corner)
+	float vertices[] = {
+		// Tree
+		// Leaves - Square 1 (Rotated)
+		125.0f,	490.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		195.0f,	415.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		125.0f,	340.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		55.0f,	415.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Leaves - Square 2 (Straight)
+		80.0f,	470.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		170.0f,	470.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		170.0f,	380.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		80.0f,	380.0f,	0.0f, 0.20f, 0.60f, 0.18f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Trunk
+		110.0f,	540.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		140.0f,	540.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		140.0f,	470.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		110.0f,	470.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
 
-	uint32_t indexCount = 0;
+		// The house
+		// The door
+		830.0f,	550.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		910.0f,	550.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		910.0f,	430.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		830.0f,	430.0f,	0.0f, 0.70f, 0.50f, 0.30f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Window - front
+		940.0f,	490.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		995.0f,	490.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		995.0f,	440.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		940.0f,	440.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Window - side
+		1060.0f,500.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1110.0f,500.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1110.0f,410.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1060.0f,410.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Wall - front
+		720.0f,	550.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1020.0f,550.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1020.0f,350.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
+		720.0f,	350.0f,	0.0f, 0.85f, 0.85f, 0.85f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Wall - side
+		1020.0f,550.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1150.0f,550.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1150.0f,350.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1020.0f,350.0f,	0.0f, 0.55f, 0.55f, 0.55f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Roof - front
+		720.0f,	350.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1020.0f,350.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1090.0f,240.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		790.0f,	240.0f,	0.0f, 0.40f, 0.45f, 0.60f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Roof - front (it's a triangle, but the last vertex is duplicated
+		// to not break the format)
+		1020.0f,350.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1150.0f,350.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1090.0f,240.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1090.0f,240.0f,	0.0f, 0.25f, 0.25f, 0.35f, 1.0f, 0.0f, 0.0f, 0.0f,
 
-	//std::array<Vertex, 64> vertices;
-	//Vertex* buffer = vertices.data();
-	//buffer = CreateQuad(buffer, )
+		// Ground
+		0.0f,	720.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,720.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,480.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f,	480.0f,	0.0f, 0.5f, 0.75f, 0.3f, 1.0f, 0.0f, 0.0f, 0.0f,
 
+		// Far ground
+		0.0f,	720.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,720.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,312.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f,	312.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
+
+		// Cloud - Small
+		m_SmallCloudOffset[0] + 375.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 540.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 540.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 375.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+
+		// Birds
+		// Bird 1
+		m_BirdsOffset[0] + 630.0f, m_BirdsOffset[1] + 120.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 630.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 654.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 570.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Bird 3
+		m_BirdsOffset[0] + 580.0f, m_BirdsOffset[1] + 71.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 580.0f, m_BirdsOffset[1] + 40.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 600.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 550.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		// Bird 2
+		m_BirdsOffset[0] + 505.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 505.0f, m_BirdsOffset[1] + 55.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 525.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 465.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+
+		// Cloud - Big
+		m_BigCloudOffset[0] + 505.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 750.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 750.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 505.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+
+		// Sun - straight
+		72.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		152.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		152.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		72.0f, 120.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+
+		// Sky
+		0.0f,	720.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,720.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
+		1280.0f,0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
+		0.0f,	0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
+	};
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_QuadVB);
+	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Blue BG <- MAKE IT BLUE
 	//glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Grey BG
@@ -292,6 +287,24 @@ void VillageLayer::OnUpdate(Timestep ts)
 void VillageLayer::OnImGuiRender()
 {
 	ImGui::Begin("Controls");
+	ImGui::SliderFloat2("Bird offset", m_BirdsOffset, -1200.0f, 1000.f);
+	ImGui::SliderFloat2("Small cloud offset", m_SmallCloudOffset, -1200.0f, 1000.f);
+	ImGui::SliderFloat2("Big cloud offset", m_BigCloudOffset, -1200.0f, 1000.f);
+
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Spacing();
+
+	ImGui::SliderFloat("Bird speed", &m_BirdSpeed, 0.0f, 2.0f, "%.2f");
+	ImGui::SliderFloat("Small cloud speed", &m_SmallCloudSpeed, 0.0f, 2.0f, "%.2f");
+	ImGui::SliderFloat("Big cloud speed", &m_BigCloudSpeed, 0.0f, 2.0f, "%.2f");
+
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Spacing();
+	ImGui::Spacing();
+
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	ImGui::End();
 }
