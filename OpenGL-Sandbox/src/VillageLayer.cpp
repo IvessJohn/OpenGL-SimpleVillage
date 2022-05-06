@@ -153,6 +153,21 @@ static Vertex* CreateQuad(
 	return target;
 }
 
+static float KeepLocationWithinBounds(float& val, float min, float max)
+{
+	if (val > max)
+	{
+		val = min;
+		return min;
+	}
+	else if (val < min)
+	{
+		val = max;
+		return max;
+	}
+	return val;
+}
+
 void VillageLayer::OnUpdate(Timestep ts)
 {
 	m_CameraController.OnUpdate(ts);
@@ -228,33 +243,33 @@ void VillageLayer::OnUpdate(Timestep ts)
 		0.0f,	312.0f,	0.0f,	0.8f, 0.9f, 0.5f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Cloud - Small
-		m_SmallCloudOffset[0] + 375.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_SmallCloudOffset[0] + 540.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_SmallCloudOffset[0] + 540.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_SmallCloudOffset[0] + 375.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 0.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 165.0f, m_SmallCloudOffset[1] + 120.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 165.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_SmallCloudOffset[0] + 0.0f, m_SmallCloudOffset[1] + 75.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Birds
 		// Bird 1
-		m_BirdsOffset[0] + 630.0f, m_BirdsOffset[1] + 120.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 630.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 654.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 570.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 165.0f, m_BirdsOffset[1] + 120.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 165.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 190.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 105.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
 		// Bird 3
-		m_BirdsOffset[0] + 580.0f, m_BirdsOffset[1] + 71.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 580.0f, m_BirdsOffset[1] + 40.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 600.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 550.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 115.0f, m_BirdsOffset[1] + 71.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 115.0f, m_BirdsOffset[1] + 35.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 135.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 85.0f, m_BirdsOffset[1] + 50.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
 		// Bird 2
-		m_BirdsOffset[0] + 505.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 505.0f, m_BirdsOffset[1] + 55.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 525.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BirdsOffset[0] + 465.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 40.0f, m_BirdsOffset[1] + 90.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 40.0f, m_BirdsOffset[1] + 55.0f, 0.0f, 0.99f, 0.50f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 60.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BirdsOffset[0] + 0.0f, m_BirdsOffset[1] + 70.0f, 0.0f, 0.95f, 0.47f, 0.43f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Cloud - Big
-		m_BigCloudOffset[0] + 505.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BigCloudOffset[0] + 750.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BigCloudOffset[0] + 750.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
-		m_BigCloudOffset[0] + 505.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 0.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 245.0f, m_BigCloudOffset[1] + 100.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 245.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
+		m_BigCloudOffset[0] + 0.0f, m_BigCloudOffset[1] + 20.0f, 0.0f, 0.95f, 0.95f, 0.95f, 1.0f, 0.0f, 0.0f, 0.0f,
 
 		// Sun - straight
 		72.0f, 40.0f, 0.0f, 1.00f, 0.83f, 0.47f, 1.0f, 0.0f, 0.0f, 0.0f,
@@ -269,9 +284,12 @@ void VillageLayer::OnUpdate(Timestep ts)
 		0.0f,	0.0f,	0.0f, 0.73f, 0.84f, 0.83f, 1.0f, 0.0f, 0.0f, 0.0f,
 	};
 
-	m_BigCloudOffset[0] = (m_BigCloudOffset[0] + m_BigCloudSpeed);// % m_Borders[0];
-	m_SmallCloudOffset[0] = (m_SmallCloudOffset[0] + m_SmallCloudSpeed);// % m_Borders[0];
-	m_BirdsOffset[0] = (m_BirdsOffset[0] + m_BirdSpeed);// % m_Borders[0];
+	m_BigCloudOffset[0] += m_BigCloudSpeed;
+	KeepLocationWithinBounds(m_BigCloudOffset[0], m_Borders[0], m_Borders[1]);
+	m_SmallCloudOffset[0] += m_SmallCloudSpeed;
+	KeepLocationWithinBounds(m_SmallCloudOffset[0], m_Borders[0], m_Borders[1]);
+	m_BirdsOffset[0] += m_BirdSpeed;
+	KeepLocationWithinBounds(m_BirdsOffset[0], m_Borders[0], m_Borders[1]);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_QuadVB);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
@@ -291,18 +309,18 @@ void VillageLayer::OnUpdate(Timestep ts)
 void VillageLayer::OnImGuiRender()
 {
 	ImGui::Begin("Controls");
-	ImGui::SliderFloat2("Bird offset", m_BirdsOffset, -1200.0f, 1000.f);
-	ImGui::SliderFloat2("Small cloud offset", m_SmallCloudOffset, -1200.0f, 1000.f);
-	ImGui::SliderFloat2("Big cloud offset", m_BigCloudOffset, -1200.0f, 1000.f);
+	ImGui::SliderFloat2("Bird offset", m_BirdsOffset, m_Borders[0], m_Borders[1]);
+	ImGui::SliderFloat2("Small cloud offset", m_SmallCloudOffset, m_Borders[0], m_Borders[1]);
+	ImGui::SliderFloat2("Big cloud offset", m_BigCloudOffset, m_Borders[0], m_Borders[1]);
 
 	ImGui::Spacing();
 	ImGui::Spacing();
 	ImGui::Spacing();
 	ImGui::Spacing();
 
-	ImGui::SliderFloat("Bird speed", &m_BirdSpeed, 0.0f, 5.0f, "%.2f");
-	ImGui::SliderFloat("Small cloud speed", &m_SmallCloudSpeed, 0.0f, 5.0f, "%.2f");
-	ImGui::SliderFloat("Big cloud speed", &m_BigCloudSpeed, 0.0f, 5.0f, "%.2f");
+	ImGui::SliderFloat("Bird speed", &m_BirdSpeed, -5.0f, 5.0f, "%.2f");
+	ImGui::SliderFloat("Small cloud speed", &m_SmallCloudSpeed, -5.0f, 5.0f, "%.2f");
+	ImGui::SliderFloat("Big cloud speed", &m_BigCloudSpeed, -5.0f, 5.0f, "%.2f");
 
 	ImGui::Spacing();
 	ImGui::Spacing();
